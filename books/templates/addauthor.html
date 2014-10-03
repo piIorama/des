@@ -1,0 +1,11 @@
+{% extends 'main.html'%}
+{%load staticfiles%}
+{% block books %}
+<h7>
+<form action="/authors/addauthor/{{author.id}}" method ="post" >
+	{%csrf_token%}
+	{{form}}
+	<input type="submit" class ="button" value="Добавить автора">
+</form>
+</h7>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'main.html'%}
+
+{% block authors %}
+{% for author in authors %}
+{%if author.id %}
+<h4><a href ="/author/get/{{ author.id }}">{{ author.author_name }} {{author.author_surname}}</a></h4>
+<p>Описание автора: </p>
+<p>                {{author.author_text}}</p>
+
+<hr>
+<h4>Книги автора: </a></h4><div>
+{% for book in books %}
+{%if author.id == book.book_author_id %}
+<h4><a href ="/book/get/{{ book.id }}">{{ book.book_name }} </a></h4>
+<h5>{{book.book_text}}</h5></div>
+{%endif%}
+{% endfor %}
+{%endif%}
+{% endfor %}
+
+
+{% endblock %}

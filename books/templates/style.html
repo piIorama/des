@@ -1,0 +1,21 @@
+{% extends 'main.html'%}
+{%load staticfiles%}
+{% block books %}
+<h2>Книги по жанру</h2>
+<hr>
+
+{% for style in styles %}
+<h4> {{ style.style_name}}</h4>
+{% for book in book %}
+{%if book.book_style_id == style.id%}
+<li>
+<i><h5><a href ="/book/get/{{ book.id }}"> {{book.book_name}} </a> </h5>
+</li>
+{%endif%}
+{%if book.book_author_id == author.id%}
+<h5><a href ="/author/get/{{ author.id }}"> {{author.author_name}} {{author.author_surname}}</a> </h5>
+{%endif%}
+{% endfor %}
+{% endfor %}
+<hr>
+{% endblock %}

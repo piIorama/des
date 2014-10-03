@@ -1,0 +1,27 @@
+{% extends 'main.html'%}\
+{%load staticfiles%}
+{% block books %}
+<h3>Книги</h3>
+<hr>
+<p class ="row">
+{% for book in books %}
+<h3 class="span2">	 {{ book.book_name }}</h3>
+<h4>	 {{ book.book_jpg }}</h4>
+<h4><img src="{%static "{{book.book_name}}"%}"></img></h4>
+
+{% for author in authors %}
+{%if book.book_author_id == author.id%}
+<h5 class="span2"><a href ="/author/get/{{ author.id }}"> {{author.author_name}} {{author.author_surname}}</a> </h5>
+{%endif%}
+{% endfor %}
+{% for style in styles %}
+{%if book.book_style_id == style.id%}
+<h5 class="span2"><a href ="/style/get/{{style.id}}"> {{ style.style_name}}</h5>
+{%endif%}
+{% endfor %}
+<h4><a href ="/book/get/{{ book.id }}"> {{book.book_name}} </a> </h4>
+<b><h4 class="span2">Аннотация книги:</h4></b><h6> {{book.book_text}} </h6>
+<hr>
+</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'main.html'%}
+{%load staticfiles%}
+{% block books %}
+<h4>Книга</h4>
+<hr>
+
+{% for book in book %}
+	{%if book.book.id == book_id %}
+	<h5><img src="{%static "lord01.jpg" width="100px" hight="100px"%}"></img>Название книги:	 <h4>{{book.book_name }}</h4></p>
+	<p>Аннотация книги: <h4>{{book.book_text}}</h4> </p>
+	{% for author in authors %}
+	{%if author.id == book.book_author_id %}
+	<h4><a href ="/author/get/{{ book.book_author_id }}">{{author.author_name}} {{author.author_surname}} </a> </h4>
+	{% endif %}
+	{% endfor %}
+	{% for style in styles %}
+	{%if book.book_author_id == style.id%}
+	<p>Название стиля: {{ style.style_name}}</p>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+{% endfor %}
+
+<hr>
+{% endblock %}

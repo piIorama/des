@@ -1,0 +1,15 @@
+{% extends 'main.html'%}
+
+{% block authors %}
+<h3>Авторы</h3>
+<hr>
+{% for author in authors %}
+<h4><a href ="/author/get/{{ author.id }}">{{ author.author_name }} {{ author.author_surname }}</a></h4>
+<h5>Описание автора: </p>
+<p>                {{author.author_text}}</p>
+
+<p>                {{author.author_date}}</h5>
+<hr>
+
+{% endfor %}
+{% endblock %}
